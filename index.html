@@ -1,110 +1,23 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Hodnocení situace dítěte</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 600px;
-      margin: 50px auto;
-      padding: 20px;
-      border-radius: 12px;
-      background: #f9f9f9;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    h1 { text-align: center; }
-    .question { display: none; }
-    .question.active { display: block; }
-    button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      background: #4CAF50;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    button:hover { background: #45a049; }
-    .result {
-      padding: 20px;
-      border-radius: 10px;
-      margin-top: 20px;
-      font-weight: bold;
-      text-align: center;
-    }
-    .low { background: #d4edda; color: #155724; }
-    .medium { background: #fff3cd; color: #856404; }
-    .high { background: #f8d7da; color: #721c24; }
-  </style>
 </head>
 <body>
   <h1>Hodnocení situace dítěte</h1>
+  <h2>Hodnocení situace dítěte</h2>
 
-  <div id="quiz">
-    <div class="question active" data-points="2">
-      <p>Má dítě zajištěno bezpečné bydlení?</p>
-      <button onclick="answer(0)">Ano</button>
-      <button onclick="answer(2)">Ne</button>
-    </div>
+  <p><strong>Má dítě zajištěno bezpečné bydlení?</strong><br>
+  ✅ Ano &nbsp;&nbsp; ❌ Ne</p>
 
-    <div class="question" data-points="2">
-      <p>Dochází k zanedbávání základních potřeb (jídlo, hygiena)?</p>
-      <button onclick="answer(0)">Ne</button>
-      <button onclick="answer(2)">Ano</button>
-    </div>
+  <p><strong>Dochází k zanedbávání základních potřeb (jídlo, hygiena)?</strong><br>
+  ❌ Ne &nbsp;&nbsp; ✅ Ano</p>
 
-    <div class="question" data-points="3">
-      <p>Je podezření na fyzické nebo psychické týrání?</p>
-      <button onclick="answer(0)">Ne</button>
-      <button onclick="answer(3)">Ano</button>
-    </div>
+  <p><strong>Je podezření na fyzické nebo psychické týrání?</strong><br>
+  ❌ Ne &nbsp;&nbsp; ✅ Ano</p>
 
-    <div class="question" data-points="1">
-      <p>Má dítě možnost navštěvovat školu?</p>
-      <button onclick="answer(0)">Ano</button>
-      <button onclick="answer(1)">Ne</button>
-    </div>
-  </div>
-
-  <div id="result" class="result" style="display:none;"></div>
-
-  <script>
-    let currentQuestion = 0;
-    let score = 0;
-    const questions = document.querySelectorAll(".question");
-    const resultDiv = document.getElementById("result");
-
-    function answer(points) {
-      score += points;
-      questions[currentQuestion].classList.remove("active");
-      currentQuestion++;
-      if (currentQuestion < questions.length) {
-        questions[currentQuestion].classList.add("active");
-      } else {
-        showResult();
-      }
-    }
-
-    function showResult() {
-      let message = "";
-      let cssClass = "";
-      if (score <= 2) {
-        message = "Nízká naléhavost – situaci je třeba sledovat.";
-        cssClass = "low";
-      } else if (score <= 5) {
-        message = "Střední naléhavost – doporučeno hloubkové šetření.";
-        cssClass = "medium";
-      } else {
-        message = "Vysoká naléhavost – okamžitě zajistit bezpečí dítěte!";
-        cssClass = "high";
-      }
-      resultDiv.textContent = message;
-      resultDiv.classList.add(cssClass);
-      resultDiv.style.display = "block";
-    }
-  </script>
+  <p><strong>Má dítě možnost navštěvovat školu?</strong><br>
+  ✅ Ano &nbsp;&nbsp; ❌ Ne</p>
 </body>
 </html>
